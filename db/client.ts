@@ -1,5 +1,4 @@
 import mongoose from "npm:mongoose@7.6.3"; //Importamos el paquete de mongoose
-import {Client} from "../types.ts";
 
 const Schema = mongoose.Schema; //Creamos un Schema de mongoose, esto es para crear un modelo de datos en la base de datos
 
