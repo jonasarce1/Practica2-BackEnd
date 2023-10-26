@@ -1,7 +1,7 @@
 import ClientModel from "../db/client.ts";
 
 const getClient = async() => {
-    const clients = ClientModel.find({}).exec(); //Obtenemos todos los clientes
+    const clients = await ClientModel.find({}).exec(); //Obtenemos todos los clientes
     return clients;
 }
 
