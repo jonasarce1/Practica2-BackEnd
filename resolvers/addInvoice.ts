@@ -1,6 +1,7 @@
 import InvoiceModel from "../db/invoice.ts";
+import {Product} from "../types.ts";
 
-const addInvoice = async(client: string, products:Array<string>, total:number) => {
+const addInvoice = async(client: string, products: Array<Product>, total: number) => {
     if(!client || !products || !total){
         throw new Error("Faltan datos");
     }
