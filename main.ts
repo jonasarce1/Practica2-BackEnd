@@ -38,3 +38,5 @@ app.get("/products", async (req:Request, res:Response) => {
         res.json({error:error.message});
     }
 })
+
+app.listen(3000, () => { console.log("Servidor funcionando en puerto 3000"); });
