@@ -7,6 +7,8 @@ import deleteProduct from "./resolvers/deleteProduct.ts";
 import addClient from "./resolvers/addClient.ts";
 import getClient from "./resolvers/getClient.ts";
 import deleteClient from "./resolvers/deleteClient.ts";
+import addInvoice from "./resolvers/addInvoice.ts";
+import getInvoice from "./resolvers/getInvoice.ts";
 
 import { load } from "https://deno.land/std@0.204.0/dotenv/mod.ts";
 const env = await load();
@@ -77,6 +79,26 @@ app.delete("/client/:id", async(req:Request, res:Response) => {
         const id = req.params.id;
         await deleteClient(id); //Borramos segun el id que asigna Mongo automaticamente
         res.json({message:"Cliente eliminado correctamente"});
+    }catch(error){
+        res.json({error:error.message});
+    }
+})
+
+app.post("/invoice", async (req:Request, res:Response) => { //Ruta para crear facturas")
+    try{
+        const {client, products, total} = req.body;
+        const newInvoice = await addInvoice(client, products, total);
+        res.json(newInvoice);
+    }catch(error){
+        res.json({error:error.message});
+    }
+})
+
+app.get("/invoice/:id", async (req:Request, res:Response) => { //Ruta para obtener todas las facturas
+    try{
+        const id = req.params.id;
+        const invoice = await getInvoice(id);
+        res.json(invoice);
     }catch(error){
         res.json({error:error.message});
     }
