@@ -44,7 +44,7 @@ app.delete("/products/:id", async (req:Request, res:Response) => {
     try{
         const id = req.params.id;
         await deleteProduct(id);
-        res.json({message: "Producto eliminado"});
+        res.json({message:"Producto eliminado correctamente"});
     }catch(error){
         res.json({error:error.message});
     }
