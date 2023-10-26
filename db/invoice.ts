@@ -4,7 +4,7 @@ import {Invoice} from "../types.ts";
 const Schema = mongoose.Schema; //Creamos un Schema de mongoose, esto es para crear un modelo de datos en la base de datos
 
 const InvoiceSchema = new Schema({ //Schema de la factura
-    id: {type:Number, required:true, unique:true}, //id del cliente (el automatico de mongo), obligatorio y unico
+    client: {type:Number, required:true, unique:true}, //id del cliente (el automatico de mongo), obligatorio y unico
     products: {type:Array, required:true}, //array de productos, obligatorio
     total: {type:Number, required:false, default:0}, //total de la factura, no es obligatorio y es 0 por defecto
 })
