@@ -10,6 +10,8 @@ const InvoiceSchema = new Schema({ //Schema de la factura
     total: {type:Number, required:false, default:0}, //total de la factura, no es obligatorio y es 0 por defecto
 })
 
-type InvoiceModelType = mongoose.Document & Omit<Invoice, "id"> //Creamos un tipo de dato que es un documento de mongoose y omitimos el id
+//type InvoiceModelType = mongoose.Document & Omit<Invoice, "id"> //Creamos un tipo de dato que es un documento de mongoose y omitimos el id
 
-export default mongoose.model<InvoiceModelType>("Invoice", InvoiceSchema); //Exportamos el modelo de datos de mongoose
+//export default mongoose.model<InvoiceModelType>("Invoice", InvoiceSchema); //Exportamos el modelo de datos de mongoose
+
+export default mongoose.model("Invoice", InvoiceSchema); //Exportamos el modelo de datos de mongoose  asi mas simple

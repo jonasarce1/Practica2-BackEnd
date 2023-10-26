@@ -10,6 +10,8 @@ const productSchema = new Schema({ //Schema del producto
     price: {type:Number, required:true} //el precio si es obligatorio
 })
 
-type ProductModelType = mongoose.Document & Omit<Product, "id"> //Creamos un tipo de dato que es un documento de mongoose y omitimos el id
+//type ProductModelType = mongoose.Document & Omit<Product, "id"> //Creamos un tipo de dato que es un documento de mongoose y omitimos el id
 
-export default mongoose.model<ProductModelType>("Product", productSchema); //Exportamos el modelo de datos de mongoose, con export default podemos llamarlo como queramos al importarlo
+//export default mongoose.model<ProductModelType>("Product", productSchema); //Exportamos el modelo de datos de mongoose, con export default podemos llamarlo como queramos al importarlo
+
+export default mongoose.model("Product", productSchema); //Exportamos el modelo de datos de mongoose, con export default podemos llamarlo como queramos al importarlo  asi mas simple
