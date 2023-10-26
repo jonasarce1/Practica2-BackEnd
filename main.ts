@@ -4,6 +4,8 @@ import mongoose from "npm:mongoose@7.6.3";
 import addProduct from "./resolvers/addProduct.ts";
 import getProduct from "./resolvers/getProduct.ts";
 import deleteProduct from "./resolvers/deleteProduct.ts";
+import addClient from "./resolvers/addClient.ts";
+import getClient from "./resolvers/getClient.ts";
 
 import { load } from "https://deno.land/std@0.204.0/dotenv/mod.ts";
 const env = await load();
@@ -31,7 +33,7 @@ app.post("/products", async (req:Request, res:Response) => { //Ruta para crear p
     }
 })
 
-app.get("/products", async (_req:Request, res:Response) => {
+app.get("/products", async (_req:Request, res:Response) => { //Ruta para obtener todos los productos
     try{
         const products = await getProduct();
         res.json(products);
@@ -40,11 +42,30 @@ app.get("/products", async (_req:Request, res:Response) => {
     }
 })
 
-app.delete("/products/:id", async (req:Request, res:Response) => {
+app.delete("/products/:id", async (req:Request, res:Response) => { //Ruta para eliminar un producto
     try{
         const id = req.params.id;
         await deleteProduct(id);
         res.json({message:"Producto eliminado correctamente"});
+    }catch(error){
+        res.json({error:error.message});
+    }
+})
+
+app.post("/client", async (req:Request, res:Response) => { //Ruta para crear clientes
+    try{
+        const {name, cif} = req.body;
+        const newClient = await addClient(name, cif);
+        res.json(newClient);
+    }catch(error){
+        res.json({error:error.message});
+    }
+})
+
+app.get("/client", async (_req:Request, res:Response) => { //Ruta para obtener todos los clientes
+    try{
+        const clients = await getClient();
+        res.json(clients);
     }catch(error){
         res.json({error:error.message});
     }
