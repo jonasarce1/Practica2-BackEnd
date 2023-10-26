@@ -14,4 +14,4 @@ type InvoiceModelType = mongoose.Document & Omit<Invoice, "id"> //Creamos un tip
 
 export default mongoose.model<InvoiceModelType>("Invoice", InvoiceSchema); //Exportamos el modelo de datos de mongoose
 
-//export default mongoose.model("Invoice", InvoiceSchema); //Exportamos el modelo de datos de mongoose  asi mas simple pero se ve el id
+//export default mongoose.model("Invoice", InvoiceSchema); //Exportamos el modelo de datos de mongoose  asi mas simple 

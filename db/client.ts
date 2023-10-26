@@ -12,4 +12,4 @@ type ClientModelType = mongoose.Document & Omit<Client, "id"> //Creamos un tipo 
 
 export default mongoose.model<ClientModelType>("Client", clientSchema); //Exportamos el modelo de datos de mongoose
 
-//export default mongoose.model("Client", clientSchema); //Exportamos el modelo de datos de mongoose asi mas simple pero se ve el id
+//export default mongoose.model("Client", clientSchema); //Exportamos el modelo de datos de mongoose asi mas simple 

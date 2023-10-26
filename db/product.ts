@@ -14,4 +14,4 @@ type ProductModelType = mongoose.Document & Omit<Product, "id"> //Creamos un tip
 
 export default mongoose.model<ProductModelType>("Product", productSchema); //Exportamos el modelo de datos de mongoose, con export default podemos llamarlo como queramos al importarlo
 
-//export default mongoose.model("Product", productSchema); //Exportamos el modelo de datos de mongoose, con export default podemos llamarlo como queramos al importarlo  asi mas simple pero se ve el id
+//export default mongoose.model("Product", productSchema); //Exportamos el modelo de datos de mongoose, con export default podemos llamarlo como queramos al importarlo  asi mas simple 
