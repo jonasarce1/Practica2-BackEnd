@@ -3,6 +3,7 @@ import mongoose from "npm:mongoose@7.6.3";
 
 import addProduct from "./resolvers/addProduct.ts";
 import getProduct from "./resolvers/getProduct.ts";
+import deleteProduct from "./resolvers/deleteProduct.ts";
 
 import { load } from "https://deno.land/std@0.204.0/dotenv/mod.ts";
 const env = await load();
@@ -34,6 +35,16 @@ app.get("/products", async (_req:Request, res:Response) => {
     try{
         const products = await getProduct();
         res.json(products);
+    }catch(error){
+        res.json({error:error.message});
+    }
+})
+
+app.delete("/products/:id", async (req:Request, res:Response) => {
+    try{
+        const id = req.params.id;
+        await deleteProduct(id);
+        res.json({message: "Producto eliminado"});
     }catch(error){
         res.json({error:error.message});
     }
