@@ -30,9 +30,9 @@ app.post("/products", async (req:Request, res:Response) => { //Ruta para crear p
     }
 })
 
-app.get("/products", async (req:Request, res:Response) => {
+app.get("/products", async (_req:Request, res:Response) => {
     try{
-        const products = getProduct();
+        const products = await getProduct();
         res.json(products);
     }catch(error){
         res.json({error:error.message});
