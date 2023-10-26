@@ -5,7 +5,7 @@ const getInvoice = async(id:number) => {
         throw new Error("Faltan datos");
     }
 
-    const invoice = InvoiceModel.findById(id).exec();
+    const invoice = await InvoiceModel.findById(id).exec();
 
     if(!invoice){
         throw new Error("No existe esa factura");
