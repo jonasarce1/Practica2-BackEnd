@@ -5,7 +5,15 @@ const addInvoice = async(client: string, products: Array<Product>, total: number
     if(!client || !products || !total){
         throw new Error("Faltan datos");
     }
+
+    const yaExiste = await InvoiceModel.findOne({client}).exec();
+
+    if(yaExiste){
+        throw new Error("Ya existe esa factura");
+    }
+
     const newInvoice = new InvoiceModel({client, products, total});
+
     await newInvoice.save(); //Esperamos a que se guarde la factura en la base de datos
     return newInvoice;
 }
