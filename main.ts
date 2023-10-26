@@ -25,6 +25,8 @@ app.post("/products", async (req:Request, res:Response) => { //Ruta para crear p
         const {name, stock, description, price} = req.body;
         const newProduct = await addProduct(name, stock, description, price);
         res.json(newProduct);
+    }catch(error){
+        res.json({error:error.message});
     }
 })
 
