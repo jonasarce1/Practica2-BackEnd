@@ -6,6 +6,7 @@ import getProduct from "./resolvers/getProduct.ts";
 import deleteProduct from "./resolvers/deleteProduct.ts";
 import addClient from "./resolvers/addClient.ts";
 import getClient from "./resolvers/getClient.ts";
+import deleteClient from "./resolvers/deleteClient.ts";
 
 import { load } from "https://deno.land/std@0.204.0/dotenv/mod.ts";
 const env = await load();
@@ -45,7 +46,7 @@ app.get("/products", async (_req:Request, res:Response) => { //Ruta para obtener
 app.delete("/products/:id", async (req:Request, res:Response) => { //Ruta para eliminar un producto
     try{
         const id = req.params.id;
-        await deleteProduct(id);
+        await deleteProduct(id); //Borramos segun el id que asigna Mongo automaticamente
         res.json({message:"Producto eliminado correctamente"});
     }catch(error){
         res.json({error:error.message});
@@ -66,6 +67,16 @@ app.get("/client", async (_req:Request, res:Response) => { //Ruta para obtener t
     try{
         const clients = await getClient();
         res.json(clients);
+    }catch(error){
+        res.json({error:error.message});
+    }
+})
+
+app.delete("/client/:id", async(req:Request, res:Response) => {
+    try{
+        const id = req.params.id;
+        await deleteClient(id); //Borramos segun el id que asigna Mongo automaticamente
+        res.json({message:"Cliente eliminado correctamente"});
     }catch(error){
         res.json({error:error.message});
     }
