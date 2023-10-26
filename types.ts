@@ -12,6 +12,6 @@ export type Client = {
 
 export type Invoice = {
     client: string, //Id de mongo
-    products: Product[], //Array de productos
+    products: Array<string>, //Array de ids de mongo
     total: number //Importe total de la factura
 }
