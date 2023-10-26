@@ -2,7 +2,7 @@ import ProductModel from "../db/product.ts"
 
 const addProduct = async (name:string, stock:number, description:string, price:number) => {
     try{
-        if(!name || !price){
+        if(!name || !price || price < 0){
             throw new Error("Faltan datos");
         }
     
