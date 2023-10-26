@@ -1,5 +1,6 @@
 import mongoose from "npm:mongoose@7.6.3"; //Importamos el paquete de mongoose
 import {Product} from "../types.ts";
+import {Invoice} from "../types.ts";
 
 const Schema = mongoose.Schema; //Creamos un Schema de mongoose, esto es para crear un modelo de datos en la base de datos
 
@@ -9,8 +10,8 @@ const InvoiceSchema = new Schema({ //Schema de la factura
     total: {type:Number, required:false, default:0}, //total de la factura, no es obligatorio y es 0 por defecto
 })
 
-//type InvoiceModelType = mongoose.Document & Omit<Invoice, "id"> //Creamos un tipo de dato que es un documento de mongoose y omitimos el id
+type InvoiceModelType = mongoose.Document & Omit<Invoice, "id"> //Creamos un tipo de dato que es un documento de mongoose y omitimos el id
 
-//export default mongoose.model<InvoiceModelType>("Invoice", InvoiceSchema); //Exportamos el modelo de datos de mongoose
+export default mongoose.model<InvoiceModelType>("Invoice", InvoiceSchema); //Exportamos el modelo de datos de mongoose
 
-export default mongoose.model("Invoice", InvoiceSchema); //Exportamos el modelo de datos de mongoose  asi mas simple
+//export default mongoose.model("Invoice", InvoiceSchema); //Exportamos el modelo de datos de mongoose  asi mas simple pero se ve el id
