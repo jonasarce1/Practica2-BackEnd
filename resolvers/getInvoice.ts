@@ -1,14 +1,13 @@
 import InvoiceModel from "../db/invoice.ts";
 
-const getInvoice = async(id:number) => {
-    if(!id){
+const getInvoice = async (id: number) => {
+    if (!id) {
         throw new Error("Faltan datos");
     }
-    //mostrar los productos y el cliente visibles, no que se vea el id
 
-    const invoice = await InvoiceModel.findOne({_id:id}).populate("products").populate("client").exec();
-    
-    if(!invoice){
+    const invoice = await InvoiceModel.findById(id) .populate('client').populate('products').exec(); //Buscamos la factura por id y con populate hacemos que nos devuelva el cliente y los productos como objetos
+
+    if (!invoice) {
         throw new Error("No existe esta factura");
     }
 
